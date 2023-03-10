@@ -28,3 +28,5 @@ ${API_KEY} The API Key for the account
 
 The code should take into account every new run and create a new variable.
 
+[RESULTS]
+You can view the results by opening the log.html and report.html files attached to the repo.
