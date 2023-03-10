@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20230310 15:58:03.385" rpa="false" schemaversion="3">
+<suite id="s1" name="VSRobots" source="C:\Users\SVD\Desktop\VSRobots">
+<suite id="s1-s1" name="Api" source="C:\Users\SVD\Desktop\VSRobots\api">
+<suite id="s1-s1-s1" name="Kanbanize Main" source="C:\Users\SVD\Desktop\VSRobots\api\kanbanize_main.robot">
+<test id="s1-s1-s1-t1" name="TC01: Create a new card (POST)" line="13">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:03.846" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:03.845" endtime="20230310 15:58:03.846"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'track':1, ${custom_id}, 'lane_id':1, 'column_id':2, 'title':'title', 'position':1, 'color':'#FF0000', 'priority':250})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:03.848" level="INFO">${body} = {"track": 1, "custom_id": "RobotTest", "lane_id": 1, "column_id": 2, "title": "title", "position": 1, "color": "#FF0000", "priority": 250}</msg>
+<status status="PASS" starttime="20230310 15:58:03.847" endtime="20230310 15:58:03.848"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<arg>verify=True</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:03.850" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True'}</msg>
+<status status="PASS" starttime="20230310 15:58:03.849" endtime="20230310 15:58:03.850"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:04.466" level="INFO">POST Request : url=https://sava.kanbanize.com/api/v2/cards 
+ path_url=/api/v2/cards 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True', 'Content-Length': '138'} 
+ body={"track": 1, "custom_id": "RobotTest", "lane_id": 1, "column_id": 2, "title": "title", "position": 1, "color": "#FF0000", "priority": 250} 
+ </msg>
+<msg timestamp="20230310 15:58:04.467" level="INFO">POST Response : url=https://sava.kanbanize.com/api/v2/cards 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:05 GMT', 'Content-Type': 'application/json', 'Content-Length': '942', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '438', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '30', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":1,"description":"","size":null,"priority":250,"deadline":null,"reporter":{"type":"internal","value":2},"created_at":"2023-03-10T13:58:05Z","revision":1,"last_modified":"2023-03-10T13:58:05Z","in_current_position_since":"2023-03-10T13:58:05Z","is_blocked":0,"block_reason":null,"child_card_stats":{"child_card_size_sum":0,"finished_bottom_child_card_size_sum":0,"unfinished_bottom_child_card_size_sum":0,"has_unfinished_child_cards":false,"last_unfinished_child_card_deadline":null},"finished_subtask_count":0,"unfinished_subtask_count":0,"custom_fields":[],"stickers":[],"tag_ids":[],"co_owner_ids":[],"watcher_ids":[],"column_checklist_items":[],"annotations":[],"attachments":[],"outcomes":[],"subtasks":[],"linked_cards":[],"reference":"CCR"}]} 
+ </msg>
+<msg timestamp="20230310 15:58:04.467" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:04.468" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230310 15:58:03.851" endtime="20230310 15:58:04.469"/>
+</kw>
+<kw name="Convert String To Json" library="JSONLibrary">
+<var>${test_id}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<msg timestamp="20230310 15:58:04.471" level="INFO">${test_id} = {'data': [{'card_id': 127, 'custom_id': 'RobotTest', 'board_id': 1, 'workflow_id': 1, 'title': 'title', 'owner_user_id': None, 'type_id': None, 'color': 'ff0000', 'section': 2, 'column_id': 2, 'lane_i...</msg>
+<status status="PASS" starttime="20230310 15:58:04.470" endtime="20230310 15:58:04.471"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${real_test}</var>
+<arg>${test_id}</arg>
+<arg>$.data.[:].card_id</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230310 15:58:04.493" level="INFO">${real_test} = [127]</msg>
+<status status="PASS" starttime="20230310 15:58:04.472" endtime="20230310 15:58:04.494"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${result_card_id}</arg>
+<arg>${real_test}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230310 15:58:04.495" level="INFO">${result_card_id} = [127]</msg>
+<status status="PASS" starttime="20230310 15:58:04.494" endtime="20230310 15:58:04.495"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 200...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:04.496" endtime="20230310 15:58:04.496"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:04.498" level="INFO">${verify_status_code} = 200</msg>
+<status status="PASS" starttime="20230310 15:58:04.498" endtime="20230310 15:58:04.499"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:04.499" endtime="20230310 15:58:04.500"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:04.497" endtime="20230310 15:58:04.500"/>
+</kw>
+<doc>Create a card with requirments: title: title, position != 0, color != #34a97b, priority = 250</doc>
+<status status="PASS" starttime="20230310 15:58:03.844" endtime="20230310 15:58:04.501"/>
+</test>
+<test id="s1-s1-s1-t2" name="TC02: Validate card properties(GET)" line="27">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:04.504" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:04.503" endtime="20230310 15:58:04.504"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':${result_card_id}, ${custom_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:04.506" level="INFO">${body} = {"card_id": [127], "custom_id": "RobotTest"}</msg>
+<status status="PASS" starttime="20230310 15:58:04.505" endtime="20230310 15:58:04.506"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:04.508" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS'}</msg>
+<status status="PASS" starttime="20230310 15:58:04.507" endtime="20230310 15:58:04.508"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:05.039" level="INFO">GET Request : url=https://sava.kanbanize.com/api/v2/cards 
+ path_url=/api/v2/cards 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'Content-Length': '44'} 
+ body={"card_id": [127], "custom_id": "RobotTest"} 
+ </msg>
+<msg timestamp="20230310 15:58:05.040" level="INFO">GET Response : url=https://sava.kanbanize.com/api/v2/cards 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:06 GMT', 'Content-Type': 'application/json', 'Content-Length': '5490', 'Connection': 'close', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=24e3d0da6823286837f2c52509f40659; expires=Mon, 07-Mar-2033 13:58:06 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '437', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '29', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"data":{"pagination":{"all_pages":1,"current_page":1,"results_per_page":200},"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":1},{"card_id":121,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":16},{"card_id":120,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":2},{"card_id":119,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":3},{"card_id":118,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":4},{"card_id":116,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":15},{"card_id":114,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":14},{"card_id":112,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":13},{"card_id":110,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":12},{"card_id":108,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":11},{"card_id":106,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":10},{"card_id":104,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":9},{"card_id":102,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":8},{"card_id":100,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":7},{"card_id":98,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":6},{"card_id":96,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":5},{"card_id":94,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":4},{"card_id":93,"custom_id":null,"board_id":1,"workflow_id":1,"title":"dsadsad","owner_user_id":null,"type_id":null,"color":"34a97b","section":2,"column_id":2,"lane_id":1,"position":9},{"card_id":90,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":3},{"card_id":89,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":5},{"card_id":88,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":2},{"card_id":87,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":6},{"card_id":86,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":7},{"card_id":85,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":8},{"card_id":84,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":0},{"card_id":4,"custom_id":"This is a Card","board_id":1,"workflow_id":1,"title":"HOW TO VIDEO: OKRs &amp; Initiatives","owner_user_id":null,"type_id":null,"color":"34a97b","section":3,"column_id":3,"lane_id":1,"position":1},{"card_id":3,"custom_id":"This is a Card","board_id":1,"workflow_id":1,"title":"HOW TO VIDEOS: Designing your boards","owner_user_id":null,"type_id":null,"color":"34a97b","section":3,"column_id":3,"lane_id":1,"position":0},{"card_id":1,"custom_id":"This is an Initiative","board_id":1,"workflow_id":2,"title":"Start Your Kanbanize Journey HERE! (click to open)","owner_user_id":null,"type_id":null,"color":"77569b","section":3,"column_id":8,"lane_id":2,"position":0}]}} 
+ </msg>
+<msg timestamp="20230310 15:58:05.040" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:05.042" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230310 15:58:04.508" endtime="20230310 15:58:05.042"/>
+</kw>
+<kw name="Verify Card Position Priority and Colour">
+<arg>${response.content}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string_response}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230310 15:58:05.044" level="INFO">${string_response} = {"data":{"pagination":{"all_pages":1,"current_page":1,"results_per_page":200},"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id"...</msg>
+<status status="PASS" starttime="20230310 15:58:05.044" endtime="20230310 15:58:05.045"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${string_response}</arg>
+<arg>RobotTest</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:05.045" endtime="20230310 15:58:05.046"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${string_response}</arg>
+<arg>"position":1</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:05.046" endtime="20230310 15:58:05.046"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${string_response}</arg>
+<arg>"color":"ff0000"</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:05.047" endtime="20230310 15:58:05.047"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:05.043" endtime="20230310 15:58:05.047"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 200...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:05.047" endtime="20230310 15:58:05.048"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:05.050" level="INFO">${verify_status_code} = 200</msg>
+<status status="PASS" starttime="20230310 15:58:05.049" endtime="20230310 15:58:05.051"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:05.051" endtime="20230310 15:58:05.052"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:05.048" endtime="20230310 15:58:05.052"/>
+</kw>
+<doc>Verify if: If the card is created. Position of the card, Priority and Color</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:04.502" endtime="20230310 15:58:05.052"/>
+</test>
+<test id="s1-s1-s1-t3" name="TC03: Move card to a different column (PATCH)" line="38">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:05.056" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:05.055" endtime="20230310 15:58:05.057"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':'${result_card_id}', ${custom_id}, "column_id":3 })</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:05.059" level="INFO">${body} = {"card_id": "[127]", "custom_id": "RobotTest", "column_id": 3}</msg>
+<status status="PASS" starttime="20230310 15:58:05.058" endtime="20230310 15:58:05.059"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<arg>verify=True</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:05.061" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True'}</msg>
+<status status="PASS" starttime="20230310 15:58:05.060" endtime="20230310 15:58:05.061"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230310 15:58:08.064" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20230310 15:58:05.062" endtime="20230310 15:58:08.064"/>
+</kw>
+<kw name="PATCH On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${end_point}/${result_card_id}[0]</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PATCH request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:08.641" level="INFO">PATCH Request : url=https://sava.kanbanize.com/api/v2/cards/127 
+ path_url=/api/v2/cards/127 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True', 'Content-Length': '62'} 
+ body={"card_id": "[127]", "custom_id": "RobotTest", "column_id": 3} 
+ </msg>
+<msg timestamp="20230310 15:58:08.642" level="INFO">PATCH Response : url=https://sava.kanbanize.com/api/v2/cards/127 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:09 GMT', 'Content-Type': 'application/json', 'Content-Length': '925', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=2d3fa7ec97ac2320c6e57e148b04f2d3; expires=Mon, 07-Mar-2033 13:58:09 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '436', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '28', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":17,"description":"","size":null,"priority":250,"deadline":null,"reporter":{"type":"internal","value":2},"created_at":"2023-03-10T13:58:05Z","revision":2,"last_modified":"2023-03-10T13:58:09Z","in_current_position_since":"2023-03-10T13:58:09Z","is_blocked":0,"block_reason":null,"child_card_stats":{"child_card_size_sum":0,"finished_bottom_child_card_size_sum":0,"unfinished_bottom_child_card_size_sum":0,"has_unfinished_child_cards":false,"last_unfinished_child_card_deadline":null},"finished_subtask_count":0,"unfinished_subtask_count":0,"custom_fields":[],"stickers":[],"tag_ids":[],"co_owner_ids":[],"watcher_ids":[],"column_checklist_items":[],"annotations":[],"attachments":[],"outcomes":[],"subtasks":[],"linked_cards":[]}]} 
+ </msg>
+<msg timestamp="20230310 15:58:08.642" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:08.644" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230310 15:58:08.065" endtime="20230310 15:58:08.644"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 200...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:08.645" endtime="20230310 15:58:08.646"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:08.647" level="INFO">${verify_status_code} = 200</msg>
+<status status="PASS" starttime="20230310 15:58:08.647" endtime="20230310 15:58:08.648"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:08.648" endtime="20230310 15:58:08.649"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:08.646" endtime="20230310 15:58:08.649"/>
+</kw>
+<doc>Create a card with requirments: title: title, position != 0, color != #34a97b, priority = 250</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:05.054" endtime="20230310 15:58:08.650"/>
+</test>
+<test id="s1-s1-s1-t4" name="TC04: Validate card position (GET)" line="49">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:08.653" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:08.652" endtime="20230310 15:58:08.653"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':'${result_card_id}', ${custom_id}})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:08.654" level="INFO">${body} = {"card_id": "[127]", "custom_id": "RobotTest"}</msg>
+<status status="PASS" starttime="20230310 15:58:08.654" endtime="20230310 15:58:08.655"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:08.656" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS'}</msg>
+<status status="PASS" starttime="20230310 15:58:08.655" endtime="20230310 15:58:08.656"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:09.167" level="INFO">GET Request : url=https://sava.kanbanize.com/api/v2/cards 
+ path_url=/api/v2/cards 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'Content-Length': '46'} 
+ body={"card_id": "[127]", "custom_id": "RobotTest"} 
+ </msg>
+<msg timestamp="20230310 15:58:09.167" level="INFO">GET Response : url=https://sava.kanbanize.com/api/v2/cards 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '5491', 'Connection': 'close', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=3cc6a149cfcb60547f98fa06c4dcd24e; expires=Mon, 07-Mar-2033 13:58:10 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '435', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '27', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"data":{"pagination":{"all_pages":1,"current_page":1,"results_per_page":200},"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":17},{"card_id":121,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":16},{"card_id":120,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":1},{"card_id":119,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":2},{"card_id":118,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":3},{"card_id":116,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":15},{"card_id":114,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":14},{"card_id":112,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":13},{"card_id":110,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":12},{"card_id":108,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":11},{"card_id":106,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":10},{"card_id":104,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":9},{"card_id":102,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":8},{"card_id":100,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":7},{"card_id":98,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":6},{"card_id":96,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":5},{"card_id":94,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":4},{"card_id":93,"custom_id":null,"board_id":1,"workflow_id":1,"title":"dsadsad","owner_user_id":null,"type_id":null,"color":"34a97b","section":2,"column_id":2,"lane_id":1,"position":8},{"card_id":90,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":3},{"card_id":89,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":4},{"card_id":88,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":2},{"card_id":87,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":5},{"card_id":86,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":6},{"card_id":85,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":7},{"card_id":84,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":2,"column_id":2,"lane_id":1,"position":0},{"card_id":4,"custom_id":"This is a Card","board_id":1,"workflow_id":1,"title":"HOW TO VIDEO: OKRs &amp; Initiatives","owner_user_id":null,"type_id":null,"color":"34a97b","section":3,"column_id":3,"lane_id":1,"position":1},{"card_id":3,"custom_id":"This is a Card","board_id":1,"workflow_id":1,"title":"HOW TO VIDEOS: Designing your boards","owner_user_id":null,"type_id":null,"color":"34a97b","section":3,"column_id":3,"lane_id":1,"position":0},{"card_id":1,"custom_id":"This is an Initiative","board_id":1,"workflow_id":2,"title":"Start Your Kanbanize Journey HERE! (click to open)","owner_user_id":null,"type_id":null,"color":"77569b","section":3,"column_id":8,"lane_id":2,"position":0}]}} 
+ </msg>
+<msg timestamp="20230310 15:58:09.168" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:09.169" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230310 15:58:08.657" endtime="20230310 15:58:09.170"/>
+</kw>
+<kw name="Verify Card Column Id">
+<arg>${response.content}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string_response}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230310 15:58:09.172" level="INFO">${string_response} = {"data":{"pagination":{"all_pages":1,"current_page":1,"results_per_page":200},"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id"...</msg>
+<status status="PASS" starttime="20230310 15:58:09.172" endtime="20230310 15:58:09.172"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${string_response}</arg>
+<arg>"column_id":3</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:09.173" endtime="20230310 15:58:09.173"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:09.170" endtime="20230310 15:58:09.173"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 200...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:09.174" endtime="20230310 15:58:09.174"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:09.176" level="INFO">${verify_status_code} = 200</msg>
+<status status="PASS" starttime="20230310 15:58:09.175" endtime="20230310 15:58:09.176"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:09.176" endtime="20230310 15:58:09.177"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:09.174" endtime="20230310 15:58:09.177"/>
+</kw>
+<doc>Validate if the card is in the correct column (3)</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:08.651" endtime="20230310 15:58:09.177"/>
+</test>
+<test id="s1-s1-s1-t5" name="TC05: Move card to invalid column (PATCH)" line="60">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:09.181" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:09.181" endtime="20230310 15:58:09.182"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'track':1, 'custom_id':'Test', 'lane_id':1, 'column_id':6, 'card_id':'${result_card_id}'})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:09.183" level="INFO">${body} = {"track": 1, "custom_id": "Test", "lane_id": 1, "column_id": 6, "card_id": "[127]"}</msg>
+<status status="PASS" starttime="20230310 15:58:09.182" endtime="20230310 15:58:09.184"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<arg>verify=True</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:09.185" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True'}</msg>
+<status status="PASS" starttime="20230310 15:58:09.185" endtime="20230310 15:58:09.186"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${response}</var>
+<arg>PATCH On Session</arg>
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="PATCH On Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PATCH request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:09.708" level="INFO">PATCH Request : url=https://sava.kanbanize.com/api/v2/cards 
+ path_url=/api/v2/cards 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True', 'Content-Length': '83'} 
+ body={"track": 1, "custom_id": "Test", "lane_id": 1, "column_id": 6, "card_id": "[127]"} 
+ </msg>
+<msg timestamp="20230310 15:58:09.709" level="INFO">PATCH Response : url=https://sava.kanbanize.com/api/v2/cards 
+ status=405, reason=Method Not Allowed 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:10 GMT', 'Content-Type': 'application/json', 'Content-Length': '145', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=3bda6d0b249ac981d1525a79c091b395; expires=Mon, 07-Mar-2033 13:58:10 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '434', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '26', 'Allow': 'OPTIONS, GET, POST', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"error":{"code":"RMNA","message":"The method PATCH is not allowed for this resource.","reference":"GE-RMNA-PATCH","details":{"method":"PATCH"}}} 
+ </msg>
+<msg timestamp="20230310 15:58:09.709" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:09.710" level="FAIL">HTTPError: 405 Client Error: Method Not Allowed for url: https://sava.kanbanize.com/api/v2/cards</msg>
+<status status="FAIL" starttime="20230310 15:58:09.187" endtime="20230310 15:58:09.712"/>
+</kw>
+<msg timestamp="20230310 15:58:09.712" level="INFO">${response} = ('FAIL', 'HTTPError: 405 Client Error: Method Not Allowed for url: https://sava.kanbanize.com/api/v2/cards')</msg>
+<status status="PASS" starttime="20230310 15:58:09.187" endtime="20230310 15:58:09.713"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:09.713" endtime="20230310 15:58:09.714"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 405...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:09.714" endtime="20230310 15:58:09.715"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response}</arg>
+<arg>405</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:09.716" level="INFO">${verify_status_code} = ["FAIL", "HTTPError: 405 Client Error: Method Not Allowed for url: https://sava.kanbanize.com/api/v2/cards"]</msg>
+<status status="PASS" starttime="20230310 15:58:09.716" endtime="20230310 15:58:09.716"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:09.717" endtime="20230310 15:58:09.717"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:09.715" endtime="20230310 15:58:09.717"/>
+</kw>
+<doc>Move card to invalid column and validate the error</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:09.179" endtime="20230310 15:58:09.718"/>
+</test>
+<test id="s1-s1-s1-t6" name="TC06: Create subtask to card (PATCH)" line="71">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:09.721" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:09.720" endtime="20230310 15:58:09.722"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':'${result_card_id}', 'subtasks_to_add': [{'description': 'test', 'owner_user_id': 2, 'is_finished': 0, 'position': 0,}]}, separators=(',', ':'), sort_keys=True)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:09.723" level="INFO">${body} = {"card_id":"[127]","subtasks_to_add":[{"description":"test","is_finished":0,"owner_user_id":2,"position":0}]}</msg>
+<status status="PASS" starttime="20230310 15:58:09.722" endtime="20230310 15:58:09.723"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<arg>verify=True</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:09.724" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True'}</msg>
+<status status="PASS" starttime="20230310 15:58:09.724" endtime="20230310 15:58:09.725"/>
+</kw>
+<kw name="PATCH On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${end_point}/${result_card_id}[0]</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PATCH request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:10.255" level="INFO">PATCH Request : url=https://sava.kanbanize.com/api/v2/cards/127 
+ path_url=/api/v2/cards/127 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True', 'Content-Length': '109'} 
+ body={"card_id":"[127]","subtasks_to_add":[{"description":"test","is_finished":0,"owner_user_id":2,"position":0}]} 
+ </msg>
+<msg timestamp="20230310 15:58:10.255" level="INFO">PATCH Response : url=https://sava.kanbanize.com/api/v2/cards/127 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:11 GMT', 'Content-Type': 'application/json', 'Content-Length': '1031', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=c862101f517602e85628bffecd83769d; expires=Mon, 07-Mar-2033 13:58:11 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '433', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '25', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"data":[{"card_id":127,"custom_id":"RobotTest","board_id":1,"workflow_id":1,"title":"title","owner_user_id":null,"type_id":null,"color":"ff0000","section":3,"column_id":3,"lane_id":1,"position":17,"description":"","size":null,"priority":250,"deadline":null,"reporter":{"type":"internal","value":2},"created_at":"2023-03-10T13:58:05Z","revision":3,"last_modified":"2023-03-10T13:58:11Z","in_current_position_since":"2023-03-10T13:58:09Z","is_blocked":0,"block_reason":null,"child_card_stats":{"child_card_size_sum":0,"finished_bottom_child_card_size_sum":0,"unfinished_bottom_child_card_size_sum":0,"has_unfinished_child_cards":false,"last_unfinished_child_card_deadline":null},"finished_subtask_count":0,"unfinished_subtask_count":1,"custom_fields":[],"stickers":[],"tag_ids":[],"co_owner_ids":[],"watcher_ids":[],"column_checklist_items":[],"annotations":[],"attachments":[],"outcomes":[],"subtasks":[{"subtask_id":128,"description":"test","owner_user_id":2,"finished_at":null,"position":0,"attachments":[]}],"linked_cards":[]}]} 
+ </msg>
+<msg timestamp="20230310 15:58:10.256" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:10.258" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230310 15:58:09.725" endtime="20230310 15:58:10.258"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 200...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:10.258" endtime="20230310 15:58:10.259"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:10.261" level="INFO">${verify_status_code} = 200</msg>
+<status status="PASS" starttime="20230310 15:58:10.260" endtime="20230310 15:58:10.261"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:10.261" endtime="20230310 15:58:10.262"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:10.260" endtime="20230310 15:58:10.262"/>
+</kw>
+<doc>Create a subtask for the card</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:09.719" endtime="20230310 15:58:10.263"/>
+</test>
+<test id="s1-s1-s1-t7" name="TC07: Newly created subtask to be converted to &quot;Child&quot;" line="81">
+<kw name="Skip" library="BuiltIn">
+<doc>Skips the rest of the current test.</doc>
+<msg timestamp="20230310 15:58:10.265" level="SKIP">Skipped with Skip keyword.</msg>
+<status status="SKIP" starttime="20230310 15:58:10.265" endtime="20230310 15:58:10.265"/>
+</kw>
+<status status="SKIP" starttime="20230310 15:58:10.264" endtime="20230310 15:58:10.266">Skipped with Skip keyword.</status>
+</test>
+<test id="s1-s1-s1-t8" name="TC08: Delete the card (DELETE)" line="84">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:10.268" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:10.268" endtime="20230310 15:58:10.269"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':'${result_card_id}',})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:10.271" level="INFO">${body} = {"card_id": "[127]"}</msg>
+<status status="PASS" starttime="20230310 15:58:10.270" endtime="20230310 15:58:10.271"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:10.272" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS'}</msg>
+<status status="PASS" starttime="20230310 15:58:10.272" endtime="20230310 15:58:10.273"/>
+</kw>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${end_point}/${result_card_id}[0]</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:10.826" level="INFO">DELETE Request : url=https://sava.kanbanize.com/api/v2/cards/127 
+ path_url=/api/v2/cards/127 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'Content-Length': '20'} 
+ body={"card_id": "[127]"} 
+ </msg>
+<msg timestamp="20230310 15:58:10.826" level="INFO">DELETE Response : url=https://sava.kanbanize.com/api/v2/cards/127 
+ status=204, reason=No Content 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:11 GMT', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=4a33660cfbbf4186261740468483c6dd; expires=Mon, 07-Mar-2033 13:58:11 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '432', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '24', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body=None 
+ </msg>
+<msg timestamp="20230310 15:58:10.827" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:10.828" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20230310 15:58:10.274" endtime="20230310 15:58:10.829"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230310 15:58:11.830" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20230310 15:58:10.829" endtime="20230310 15:58:11.830"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 204...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:11.831" endtime="20230310 15:58:11.832"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response.status_code}</arg>
+<arg>204</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:11.833" level="INFO">${verify_status_code} = 204</msg>
+<status status="PASS" starttime="20230310 15:58:11.833" endtime="20230310 15:58:11.834"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:11.834" endtime="20230310 15:58:11.835"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:11.832" endtime="20230310 15:58:11.835"/>
+</kw>
+<doc>Delete the created card</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:10.267" endtime="20230310 15:58:11.835"/>
+</test>
+<test id="s1-s1-s1-t9" name="TC09: Verify the card has been deleted (GET)" line="95">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:11.839" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:11.838" endtime="20230310 15:58:11.839"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':'${result_card_id}', 'custom_id':'Test'})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:11.841" level="INFO">${body} = {"card_id": "[127]", "custom_id": "Test"}</msg>
+<status status="PASS" starttime="20230310 15:58:11.840" endtime="20230310 15:58:11.841"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:11.842" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS'}</msg>
+<status status="PASS" starttime="20230310 15:58:11.842" endtime="20230310 15:58:11.843"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${response}</var>
+<arg>GET On Session</arg>
+<arg>mysession</arg>
+<arg>${end_point}/${result_card_id}[0]</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${end_point}/${result_card_id}[0]</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:12.357" level="INFO">GET Request : url=https://sava.kanbanize.com/api/v2/cards/127 
+ path_url=/api/v2/cards/127 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'Content-Length': '41'} 
+ body={"card_id": "[127]", "custom_id": "Test"} 
+ </msg>
+<msg timestamp="20230310 15:58:12.358" level="INFO">GET Response : url=https://sava.kanbanize.com/api/v2/cards/127 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:13 GMT', 'Content-Type': 'application/json', 'Content-Length': '120', 'Connection': 'close', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=b76f2133d84f17abc823b36829861754; expires=Mon, 07-Mar-2033 13:58:13 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '431', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '23', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"error":{"code":"C101","message":"A card with id 127 does not exist.","reference":"GE-C101","details":{"card_id":127}}} 
+ </msg>
+<msg timestamp="20230310 15:58:12.359" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:12.360" level="FAIL">HTTPError: 404 Client Error: Not Found for url: https://sava.kanbanize.com/api/v2/cards/127</msg>
+<status status="FAIL" starttime="20230310 15:58:11.844" endtime="20230310 15:58:12.361"/>
+</kw>
+<msg timestamp="20230310 15:58:12.361" level="INFO">${response} = ('FAIL', 'HTTPError: 404 Client Error: Not Found for url: https://sava.kanbanize.com/api/v2/cards/127')</msg>
+<status status="PASS" starttime="20230310 15:58:11.843" endtime="20230310 15:58:12.362"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Card with ID:${result_card_id}[0] has been deleted</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:12.363" endtime="20230310 15:58:12.363"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 404...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:12.364" endtime="20230310 15:58:12.364"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response}</arg>
+<arg>404</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:12.365" level="INFO">${verify_status_code} = ["FAIL", "HTTPError: 404 Client Error: Not Found for url: https://sava.kanbanize.com/api/v2/cards/127"]</msg>
+<status status="PASS" starttime="20230310 15:58:12.365" endtime="20230310 15:58:12.366"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:12.366" endtime="20230310 15:58:12.367"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:12.364" endtime="20230310 15:58:12.367"/>
+</kw>
+<doc>Verify the card 127 was deleted</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:11.836" endtime="20230310 15:58:12.367"/>
+</test>
+<test id="s1-s1-s1-t10" name="TC10: Create a request to invalid card id to change its size (PATCH)" line="106">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:12.371" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:12.370" endtime="20230310 15:58:12.371"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({'card_id':'999', 'size':'500'})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:12.373" level="INFO">${body} = {"card_id": "999", "size": "500"}</msg>
+<status status="PASS" starttime="20230310 15:58:12.372" endtime="20230310 15:58:12.373"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<arg>verify=True</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:12.375" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True'}</msg>
+<status status="PASS" starttime="20230310 15:58:12.374" endtime="20230310 15:58:12.375"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${response}</var>
+<arg>PATCH On Session</arg>
+<arg>mysession</arg>
+<arg>${end_point}/999</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="PATCH On Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${end_point}/999</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PATCH request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:12.890" level="INFO">PATCH Request : url=https://sava.kanbanize.com/api/v2/cards/999 
+ path_url=/api/v2/cards/999 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True', 'Content-Length': '33'} 
+ body={"card_id": "999", "size": "500"} 
+ </msg>
+<msg timestamp="20230310 15:58:12.891" level="INFO">PATCH Response : url=https://sava.kanbanize.com/api/v2/cards/999 
+ status=404, reason=Not Found 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:13 GMT', 'Content-Type': 'application/json', 'Content-Length': '120', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'Set-Cookie': 'ci_csrf_token=84d31d6ed3a6773813fdcec409c6f558; expires=Mon, 07-Mar-2033 13:58:13 GMT; Max-Age=315360000; path=/; secure; HttpOnly', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '430', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '22', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"error":{"code":"C101","message":"A card with id 999 does not exist.","reference":"GE-C101","details":{"card_id":999}}} 
+ </msg>
+<msg timestamp="20230310 15:58:12.891" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:12.892" level="FAIL">HTTPError: 404 Client Error: Not Found for url: https://sava.kanbanize.com/api/v2/cards/999</msg>
+<status status="FAIL" starttime="20230310 15:58:12.376" endtime="20230310 15:58:12.893"/>
+</kw>
+<msg timestamp="20230310 15:58:12.894" level="INFO">${response} = ('FAIL', 'HTTPError: 404 Client Error: Not Found for url: https://sava.kanbanize.com/api/v2/cards/999')</msg>
+<status status="PASS" starttime="20230310 15:58:12.376" endtime="20230310 15:58:12.894"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 404...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:12.895" endtime="20230310 15:58:12.895"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response}</arg>
+<arg>404</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:12.896" level="INFO">${verify_status_code} = ["FAIL", "HTTPError: 404 Client Error: Not Found for url: https://sava.kanbanize.com/api/v2/cards/999"]</msg>
+<status status="PASS" starttime="20230310 15:58:12.896" endtime="20230310 15:58:12.896"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:12.897" endtime="20230310 15:58:12.897"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:12.895" endtime="20230310 15:58:12.897"/>
+</kw>
+<doc>Create a subtask for the card</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:12.369" endtime="20230310 15:58:12.898"/>
+</test>
+<test id="s1-s1-s1-t11" name="TC11: Create a card with deadline before 1970-01-01 (POST)" line="116">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230310 15:58:12.901" level="INFO">Creating Session using : alias=mysession, url=https://sava.kanbanize.com/api/v2, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230310 15:58:12.900" endtime="20230310 15:58:12.902"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${body}</var>
+<arg>json.dumps({"deadline": "1969-01-01T12:57:39.757Z", "column_id": 2})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20230310 15:58:12.903" level="INFO">${body} = {"deadline": "1969-01-01T12:57:39.757Z", "column_id": 2}</msg>
+<status status="PASS" starttime="20230310 15:58:12.902" endtime="20230310 15:58:12.903"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>apikey=${API_KEY}</arg>
+<arg>verify=True</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230310 15:58:12.904" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True'}</msg>
+<status status="PASS" starttime="20230310 15:58:12.904" endtime="20230310 15:58:12.905"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${response}</var>
+<arg>POST On Session</arg>
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${end_point}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230310 15:58:13.436" level="INFO">POST Request : url=https://sava.kanbanize.com/api/v2/cards 
+ path_url=/api/v2/cards 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'apikey': 'w6kJpWc7laEvyjk9RMbNnhlcT43md746bIVqkeIS', 'verify': 'True', 'Content-Length': '56'} 
+ body={"deadline": "1969-01-01T12:57:39.757Z", "column_id": 2} 
+ </msg>
+<msg timestamp="20230310 15:58:13.437" level="INFO">POST Response : url=https://sava.kanbanize.com/api/v2/cards 
+ status=400, reason=Bad Request 
+ headers={'Date': 'Fri, 10 Mar 2023 13:58:14 GMT', 'Content-Type': 'application/json', 'Content-Length': '200', 'Connection': 'keep-alive', 'Server': 'Apache', 'Vary': 'Referer', 'X-RateLimit-PerHour-Limit': '600', 'X-RateLimit-PerHour-Remaining': '429', 'X-RateLimit-PerMinute-Limit': '30', 'X-RateLimit-PerMinute-Remaining': '21', 'X-Kanbanize-Version': 'v0907', 'Cache-Control': 'no-cache', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains', 'X-XSS-Protection': '1', 'X-Content-Type-Options': 'nosniff', 'Content-Security-Policy': "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://kanbanize.com https://*.kanbanize.com wss://*.kanbanize.com:* https://*.googleapis.com https://*.gstatic.com https://*.google.com https://*.g.doubleclick.net https://*.doubleclick.net https://*.youtube.com https://api.trello.com/ https://api.trello.com/1/members/me https://zapier.com/zapbook/embed/widget.js https://www.googletagmanager.com https://www.google-analytics.com/ https://js.hs-scripts.com/2999884.js https://js.usemessages.com/conversations-embed.js https://js.hsleadflows.net/leadflows.js https://js.hs-analytics.net/analytics/ https://*.hubspot.com/ https://www.dropbox.com/static/api/2/dropins.js https://*.braintreegateway.com https://*.cardinalcommerce.com https://*.braintree-api.com https://includestest.ccdc02.com/cardinalcruise/ https://*.execute-api.us-east-1.amazonaws.com https://includes.ccdc02.com/cardinalcruise/ https://iwmap.americanexpress.com/ https://*.americanexpress.com/ https://app.launchdarkly.com/sdk/goals/5afa9dee926c2d215dcd74e1 https://js.hs-banner.com/v2/2999884/banner.js https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/ https://api.zapier.com/elements/zap-templates/ https://zapier.com/api/v4/tracking/event; style-src 'self' 'unsafe-inline' https://*.kanbanize.com https://app.powerbi.com/ https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css https://fonts.googleapis.com/ blob:; img-src * data:; worker-src 'self'", 'X-Frame-Options': 'SAMEORIGIN'} 
+ body={"error":{"code":"VE02","message":"The parameters in the request body did not pass validation.","reference":"0SZ5Q3B0","details":{"deadline":["The date and time must be after 1970-01-01 00:00:00."]}}} 
+ </msg>
+<msg timestamp="20230310 15:58:13.437" level="INFO">C:\Users\SVD\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'sava.kanbanize.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230310 15:58:13.438" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://sava.kanbanize.com/api/v2/cards</msg>
+<status status="FAIL" starttime="20230310 15:58:12.906" endtime="20230310 15:58:13.439"/>
+</kw>
+<msg timestamp="20230310 15:58:13.440" level="INFO">${response} = ('FAIL', 'HTTPError: 400 Client Error: Bad Request for url: https://sava.kanbanize.com/api/v2/cards')</msg>
+<status status="PASS" starttime="20230310 15:58:12.905" endtime="20230310 15:58:13.440"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Expecting status code 400...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230310 15:58:13.441" endtime="20230310 15:58:13.442"/>
+</kw>
+<kw name="Verify the status code is correct">
+<arg>${response}</arg>
+<arg>400</arg>
+<kw name="Convert Json To String" library="JSONLibrary">
+<var>${verify_status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Convert JSON object to string</doc>
+<msg timestamp="20230310 15:58:13.444" level="INFO">${verify_status_code} = ["FAIL", "HTTPError: 400 Client Error: Bad Request for url: https://sava.kanbanize.com/api/v2/cards"]</msg>
+<status status="PASS" starttime="20230310 15:58:13.443" endtime="20230310 15:58:13.444"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${verify_status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230310 15:58:13.444" endtime="20230310 15:58:13.445"/>
+</kw>
+<status status="PASS" starttime="20230310 15:58:13.442" endtime="20230310 15:58:13.445"/>
+</kw>
+<doc>Card with deadline &gt; 1970-01-01</doc>
+<tag>Validations</tag>
+<status status="PASS" starttime="20230310 15:58:12.899" endtime="20230310 15:58:13.445"/>
+</test>
+<status status="PASS" starttime="20230310 15:58:03.442" endtime="20230310 15:58:13.447"/>
+</suite>
+<status status="PASS" starttime="20230310 15:58:03.437" endtime="20230310 15:58:13.450"/>
+</suite>
+<status status="PASS" starttime="20230310 15:58:03.394" endtime="20230310 15:58:13.453"/>
+</suite>
+<statistics>
+<total>
+<stat pass="10" fail="0" skip="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="9" fail="0" skip="0">Validations</stat>
+</tag>
+<suite>
+<stat pass="10" fail="0" skip="1" id="s1" name="VSRobots">VSRobots</stat>
+<stat pass="10" fail="0" skip="1" id="s1-s1" name="Api">VSRobots.Api</stat>
+<stat pass="10" fail="0" skip="1" id="s1-s1-s1" name="Kanbanize Main">VSRobots.Api.Kanbanize Main</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
