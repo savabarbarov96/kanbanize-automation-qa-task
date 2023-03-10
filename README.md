@@ -10,22 +10,13 @@ pip install robotframework
 
 Collections - Collections library is a part of Python's standard library. Therefore, it doesn't require any separate installation.
 
-JSONLibrary - To install JSONLibrary, you can use pip. Open a terminal and type the following command:
-
-pip install robotframework-jsonlibrary
-
-RequestsLibrary - To install RequestsLibrary, you can use pip. Open a terminal and type the following command:
+JSONLibrary and RequestsLibrary - To install Open a terminal and type the following command:
 
     pip install robotframework-requests
-
-After installing all these libraries, you can import them in your Robot Framework test suite by adding the following lines to your test suite:
-
-javascript
-
-*** Settings ***
-Library    Collections
-Library    JSONLibrary
-Library    RequestsLibrary
+    
+    pip install robotframework-jsonlibrary
+    
+After installing all these libraries, you should be able to run the files. 
 
 
 [BEFORE YOU RUN]
